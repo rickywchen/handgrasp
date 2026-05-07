@@ -1,0 +1,20 @@
+
+============================================================
+  AFFORDANCE REPORT: cube
+============================================================
+  Object type:      box
+  Dimensions:       5.0 × 5.0 × 5.0 cm
+  Geom centre:      [0.550, 0.000, 0.500]
+  Real CoM:         [0.550, 0.000, 0.500]
+  CoM offset (XY):  0.0 cm
+  Table Z:          0.475 m
+
+  Total samples:    161
+  Top-down:         161 feasible
+  Side (antip.):    0 feasible
+  Not feasible:     0
+
+  Top-down quality:  min=0.41  max=0.78  mean=0.58
+  Best top contact:  pos=[0.55  0.    0.525]  q=0.782
+
+============================================================

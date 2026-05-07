@@ -1,0 +1,12 @@
+[submodule "third_party/mujoco_menagerie"]
+	path = third_party/mujoco_menagerie
+	url = https://github.com/google-deepmind/mujoco_menagerie.git
+[submodule "third_party/mujoco_panda"]
+	path = third_party/mujoco_panda
+	url = https://github.com/justagist/mujoco_panda.git
+[submodule "third_party/mujoco-ycb-dataset"]
+	path = third_party/mujoco-ycb-dataset
+	url = https://github.com/joonhyung-lee/mujoco-ycb-dataset.git
+[submodule "third_party/YCB_sim"]
+	path = third_party/YCB_sim
+	url = https://github.com/vikashplus/YCB_sim.git

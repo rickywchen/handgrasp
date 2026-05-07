@@ -1,0 +1,259 @@
+{
+  "timestamp": "20260226_184711",
+  "object_name": "cube",
+  "total_grasps": 10,
+  "successful": 0,
+  "success_rate": 0.0,
+  "results": [
+    {
+      "grasp_id": 0,
+      "strategy": "top_down",
+      "position": [
+        0.6210481679735894,
+        0.15939435831694232,
+        0.47932664160000016
+      ],
+      "approach_direction": [
+        0,
+        0,
+        -1
+      ],
+      "quality_score": 0.7392247022173358,
+      "width": 0.05,
+      "success": false,
+      "reason": "insufficient_lift",
+      "lift_distance": 0.0,
+      "contact_forces": [
+        0.0,
+        0.0
+      ],
+      "both_contacts": false,
+      "execution_time": 0.22784924507141113
+    },
+    {
+      "grasp_id": 1,
+      "strategy": "top_down",
+      "position": [
+        0.6192251777732869,
+        0.13167292517894538,
+        0.47932664160000016
+      ],
+      "approach_direction": [
+        0,
+        0,
+        -1
+      ],
+      "quality_score": 0.6994960750928363,
+      "width": 0.05,
+      "success": false,
+      "reason": "insufficient_lift",
+      "lift_distance": 0.0,
+      "contact_forces": [
+        0.0,
+        0.0
+      ],
+      "both_contacts": false,
+      "execution_time": 0.2199997901916504
+    },
+    {
+      "grasp_id": 2,
+      "strategy": "top_down",
+      "position": [
+        0.5979809127081027,
+        0.138261408324663,
+        0.47932664160000016
+      ],
+      "approach_direction": [
+        0,
+        0,
+        -1
+      ],
+      "quality_score": 0.8652427376887919,
+      "width": 0.05,
+      "success": false,
+      "reason": "insufficient_lift",
+      "lift_distance": -1.1102230246251565e-16,
+      "contact_forces": [
+        0.31959118820499866,
+        0.07780670302130564
+      ],
+      "both_contacts": false,
+      "execution_time": 0.255720853805542
+    },
+    {
+      "grasp_id": 3,
+      "strategy": "top_down",
+      "position": [
+        0.5910959267010638,
+        0.15364063968486757,
+        0.47932664160000016
+      ],
+      "approach_direction": [
+        0,
+        0,
+        -1
+      ],
+      "quality_score": 0.8911666059319739,
+      "width": 0.05,
+      "success": false,
+      "reason": "insufficient_lift",
+      "lift_distance": -1.6653345369377348e-16,
+      "contact_forces": [
+        0.24240843518036345,
+        0.007161318006508514
+      ],
+      "both_contacts": false,
+      "execution_time": 0.2632772922515869
+    },
+    {
+      "grasp_id": 4,
+      "strategy": "top_down",
+      "position": [
+        0.6185719866866641,
+        0.15445280685870458,
+        0.47932664160000016
+      ],
+      "approach_direction": [
+        0,
+        0,
+        -1
+      ],
+      "quality_score": 0.7839270705605366,
+      "width": 0.05,
+      "success": false,
+      "reason": "insufficient_lift",
+      "lift_distance": 0.0,
+      "contact_forces": [
+        0.0,
+        0.0
+      ],
+      "both_contacts": false,
+      "execution_time": 0.22400259971618652
+    },
+    {
+      "grasp_id": 5,
+      "strategy": "top_down",
+      "position": [
+        0.6067140359670282,
+        0.1293092079879458,
+        0.47932664160000016
+      ],
+      "approach_direction": [
+        0,
+        0,
+        -1
+      ],
+      "quality_score": 0.753894421861801,
+      "width": 0.05,
+      "success": false,
+      "reason": "insufficient_lift",
+      "lift_distance": 5.551115123125783e-17,
+      "contact_forces": [
+        0.0,
+        0.0
+      ],
+      "both_contacts": false,
+      "execution_time": 0.24700665473937988
+    },
+    {
+      "grasp_id": 6,
+      "strategy": "top_down",
+      "position": [
+        0.6148995634751925,
+        0.1719647296153464,
+        0.47932664160000016
+      ],
+      "approach_direction": [
+        0,
+        0,
+        -1
+      ],
+      "quality_score": 0.6997182466918774,
+      "width": 0.05,
+      "success": false,
+      "reason": "insufficient_lift",
+      "lift_distance": 0.0,
+      "contact_forces": [
+        0.0,
+        0.0
+      ],
+      "both_contacts": false,
+      "execution_time": 0.22026395797729492
+    },
+    {
+      "grasp_id": 7,
+      "strategy": "top_down",
+      "position": [
+        0.6112705924186526,
+        0.12631504814138406,
+        0.47932664160000016
+      ],
+      "approach_direction": [
+        0,
+        0,
+        -1
+      ],
+      "quality_score": 0.7032435184438591,
+      "width": 0.05,
+      "success": false,
+      "reason": "insufficient_lift",
+      "lift_distance": 0.0,
+      "contact_forces": [
+        0.0,
+        0.0
+      ],
+      "both_contacts": false,
+      "execution_time": 0.218001127243042
+    },
+    {
+      "grasp_id": 8,
+      "strategy": "top_down",
+      "position": [
+        0.5881028657098855,
+        0.15523043659076569,
+        0.47932664160000016
+      ],
+      "approach_direction": [
+        0,
+        0,
+        -1
+      ],
+      "quality_score": 0.8529656274212687,
+      "width": 0.05,
+      "success": false,
+      "reason": "insufficient_lift",
+      "lift_distance": 1.3653909225475047e-08,
+      "contact_forces": [
+        0.3192853348823317,
+        0.1602608608098624
+      ],
+      "both_contacts": false,
+      "execution_time": 0.2723507881164551
+    },
+    {
+      "grasp_id": 9,
+      "strategy": "top_down",
+      "position": [
+        0.616465815710986,
+        0.17424023390299495,
+        0.47932664160000016
+      ],
+      "approach_direction": [
+        0,
+        0,
+        -1
+      ],
+      "quality_score": 0.668465477789103,
+      "width": 0.05,
+      "success": false,
+      "reason": "insufficient_lift",
+      "lift_distance": 0.0,
+      "contact_forces": [
+        0.0,
+        0.0
+      ],
+      "both_contacts": false,
+      "execution_time": 0.21843981742858887
+    }
+  ]
+}

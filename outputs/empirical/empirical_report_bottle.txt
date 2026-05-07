@@ -1,0 +1,22 @@
+
+============================================================
+  EMPIRICAL AFFORDANCE REPORT: bottle
+============================================================
+  Total trials:      260
+  Unreachable:       155
+  Attempted:         105
+  Successes:         40
+  Failures:          65
+  Success rate:      38.1%
+  Mean lift (succ):  18.0 cm
+
+  Object CoM:        [0.55  0.014 0.447]
+  Geom centre:       [0.55  0.003 0.51 ]
+  CoM offset:        1.02 cm
+
+  SIDE GRASPS:
+    Attempted: 105  Success: 40  Fail: 65
+    SR: 38.1%
+    Fail breakdown: {'slipped': 63, 'failed_approach': 2}
+
+============================================================

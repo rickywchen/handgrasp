@@ -1,0 +1,72 @@
+{
+  "n_scenes": 5,
+  "trials_per_planner_per_scene": 8,
+  "seed": 42,
+  "per_scene": [
+    {
+      "scene": "scene_bottle.xml",
+      "object": "cube",
+      "com_offset_cm": 1.014,
+      "n_reachable_angles": 39,
+      "n_trials_per_planner": 8,
+      "naive_success_rate": 0.25,
+      "map_success_rate": 0.25,
+      "improvement_pp": 0.0,
+      "naive_avg_lift_cm": 3.47,
+      "map_avg_lift_cm": 3.28,
+      "lift_improvement_cm": -0.18
+    },
+    {
+      "scene": "scene_grasp_clean.xml",
+      "object": "cube",
+      "com_offset_cm": 0.0,
+      "n_reachable_angles": 41,
+      "n_trials_per_planner": 8,
+      "naive_success_rate": 0.5,
+      "map_success_rate": 0.75,
+      "improvement_pp": 25.0,
+      "naive_avg_lift_cm": 13.64,
+      "map_avg_lift_cm": 22.68,
+      "lift_improvement_cm": 9.04
+    },
+    {
+      "scene": "scene_grasp_cylinder.xml",
+      "object": "cube",
+      "com_offset_cm": 0.0,
+      "n_reachable_angles": 39,
+      "n_trials_per_planner": 8,
+      "naive_success_rate": 0.5,
+      "map_success_rate": 0.875,
+      "improvement_pp": 37.5,
+      "naive_avg_lift_cm": 11.33,
+      "map_avg_lift_cm": 21.58,
+      "lift_improvement_cm": 10.25
+    },
+    {
+      "scene": "scene_grasp_tallbox.xml",
+      "object": "cube",
+      "com_offset_cm": 0.0,
+      "n_reachable_angles": 41,
+      "n_trials_per_planner": 8,
+      "naive_success_rate": 0.125,
+      "map_success_rate": 0.625,
+      "improvement_pp": 50.0,
+      "naive_avg_lift_cm": 1.92,
+      "map_avg_lift_cm": 12.74,
+      "lift_improvement_cm": 10.82
+    },
+    {
+      "scene": "scene_shifted_com.xml",
+      "object": "cube",
+      "com_offset_cm": 0.956,
+      "n_reachable_angles": 40,
+      "n_trials_per_planner": 8,
+      "naive_success_rate": 0.25,
+      "map_success_rate": 0.875,
+      "improvement_pp": 62.5,
+      "naive_avg_lift_cm": 4.67,
+      "map_avg_lift_cm": 17.95,
+      "lift_improvement_cm": 13.27
+    }
+  ]
+}

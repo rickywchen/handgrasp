@@ -1,0 +1,6 @@
+mujoco
+numpy
+scipy
+trimesh
+matplotlib
+opencv-python

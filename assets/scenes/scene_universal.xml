@@ -1,0 +1,72 @@
+<mujoco model="panda_universal_grasp">
+  <compiler angle="radian" autolimits="true"/>
+  
+  <option timestep="0.002" gravity="0 0 -9.81" iterations="150" ls_iterations="150">
+    <flag contact="enable" gravity="enable"/>
+  </option>
+
+  <visual>
+    <global offwidth="1920" offheight="1080"/>
+    <quality shadowsize="4096"/>
+    <map force="0.1" zfar="30"/>
+  </visual>
+
+  <asset>
+    <texture name="grid" type="2d" builtin="checker" width="512" height="512" 
+             rgb1="0.1 0.2 0.3" rgb2="0.2 0.3 0.4"/>
+    <material name="grid" texture="grid" texrepeat="1 1" texuniform="true" reflectance="0.2"/>
+    
+    <!-- Use primitive box instead of mesh for now -->
+    <mesh name="object_mesh" vertex="
+      -0.025 -0.025 -0.025
+       0.025 -0.025 -0.025
+       0.025  0.025 -0.025
+      -0.025  0.025 -0.025
+      -0.025 -0.025  0.025
+       0.025 -0.025  0.025
+       0.025  0.025  0.025
+      -0.025  0.025  0.025"
+      face="
+      0 1 2  0 2 3
+      4 7 6  4 6 5
+      0 4 5  0 5 1
+      1 5 6  1 6 2
+      2 6 7  2 7 3
+      4 0 3  4 3 7"/>
+  </asset>
+
+  <!-- Include Panda robot -->
+  <include file="../models/franka_emika_panda/panda.xml"/>
+
+  <worldbody>
+    <light pos="0 0 3" dir="0 0 -1" directional="false" diffuse="0.8 0.8 0.8"/>
+    <light pos="1.5 1.5 2" dir="-0.3 -0.3 -1" diffuse="0.5 0.5 0.5"/>
+    
+    <!-- Ground plane -->
+    <geom name="floor" type="plane" size="0 0 1" pos="0 0 0" material="grid" condim="3"/>
+
+    <!-- Table -->
+    <body name="table" pos="0.6 0 0">
+      <geom name="tabletop" type="box" size="0.3 0.4 0.02" pos="0 0 0.4" 
+            rgba="0.95 0.95 0.95 1" condim="3" 
+            friction="2.0 0.005 0.0001"
+            solref="0.01 1" solimp="0.95 0.99 0.001"/>
+      
+      <geom name="leg1" type="cylinder" size="0.02 0.2" pos="0.25 0.35 0.2" rgba="0.5 0.5 0.5 1"/>
+      <geom name="leg2" type="cylinder" size="0.02 0.2" pos="-0.25 0.35 0.2" rgba="0.5 0.5 0.5 1"/>
+      <geom name="leg3" type="cylinder" size="0.02 0.2" pos="0.25 -0.35 0.2" rgba="0.5 0.5 0.5 1"/>
+      <geom name="leg4" type="cylinder" size="0.02 0.2" pos="-0.25 -0.35 0.2" rgba="0.5 0.5 0.5 1"/>
+    </body>
+
+    <!-- Target object -->
+    <body name="target_object" pos="0.6 0.15 0.5">
+      <freejoint/>
+      <geom name="object_geom" type="mesh" mesh="object_mesh"
+            rgba="0.2 0.6 0.9 1" mass="0.1" condim="4"
+            solref="0.005 1" solimp="0.99 0.999 0.001"
+            friction="8.0 0.1 0.001"/>
+      <site name="object_center" pos="0 0 0" size="0.005" rgba="1 0 0 1"/>
+    </body>
+  </worldbody>
+
+</mujoco>

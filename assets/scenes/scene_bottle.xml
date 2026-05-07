@@ -1,0 +1,153 @@
+<mujoco model="panda_grasp_bottle">
+  <compiler angle="radian" autolimits="true"/>
+
+  <option timestep="0.002" gravity="0 0 -9.81" iterations="150" ls_iterations="150">
+    <flag contact="enable" gravity="enable"/>
+  </option>
+
+  <visual>
+    <global offwidth="1920" offheight="1080"/>
+    <quality shadowsize="4096"/>
+    <map force="0.1" zfar="30"/>
+  </visual>
+
+  <asset>
+    <texture name="grid" type="2d" builtin="checker" width="512" height="512"
+             rgb1="0.1 0.2 0.3" rgb2="0.2 0.3 0.4"/>
+    <material name="grid" texture="grid" texrepeat="1 1" texuniform="true"
+              reflectance="0.2"/>
+  </asset>
+
+  <include file="../models/franka_emika_panda/panda.xml"/>
+
+  <worldbody>
+    <light pos="0 0 3"     dir="0 0 -1"         directional="false" diffuse="0.8 0.8 0.8"/>
+    <light pos="1.5 1.5 2" dir="-0.3 -0.3 -1"   diffuse="0.5 0.5 0.5"/>
+    <!-- Extra side light to show the grey band colour clearly -->
+    <light pos="-1 0 1.5"  dir="1 0 -0.5"        directional="true"  diffuse="0.4 0.4 0.4"/>
+
+    <geom name="floor" type="plane" size="0 0 1" pos="0 0 0"
+          material="grid" condim="3" friction="0.8 0.01 0.0005"/>
+
+    <body name="table" pos="0.55 0 0">
+      <geom name="tabletop" type="box" size="0.30 0.40 0.02" pos="0 0 0.40"
+            rgba="0.95 0.95 0.90 1" condim="3"
+            friction="2.0 0.005 0.0001"
+            solref="0.01 1" solimp="0.95 0.99 0.001"/>
+      <geom name="leg1" type="cylinder" size="0.025 0.20" pos=" 0.25  0.35 0.20" rgba="0.55 0.55 0.55 1"/>
+      <geom name="leg2" type="cylinder" size="0.025 0.20" pos="-0.25  0.35 0.20" rgba="0.55 0.55 0.55 1"/>
+      <geom name="leg3" type="cylinder" size="0.025 0.20" pos=" 0.25 -0.35 0.20" rgba="0.55 0.55 0.55 1"/>
+      <geom name="leg4" type="cylinder" size="0.025 0.20" pos="-0.25 -0.35 0.20" rgba="0.55 0.55 0.55 1"/>
+    </body>
+
+    <!--
+      BOTTLE OBJECT
+      ═══════════════════════════════════════════════════════════════
+      Body origin: [0.55, 0.00, 0.47]
+      Table top surface: world z = 0.42
+
+      World Z layout:
+        Base      z_world = 0.42 → 0.44   r=0.030  heavy + grippy  (dark blue)
+        Body      z_world = 0.44 → 0.48   r=0.030  normal friction (mid blue)
+        SLIPPERY  z_world = 0.48 → 0.52   r=0.030  LOW FRICTION    (bright orange-red)
+        Shoulder  z_world = 0.52 → 0.55   r=0.022  taper zone      (mid blue)
+        Neck      z_world = 0.55 → 0.59   r=0.015  narrow + grippy (bright blue)
+        Cap       z_world = 0.59 → 0.60   r=0.018  top cap         (dark cap)
+
+      Total height = 0.18 m  →  is_tall = True
+      Max radius   = 0.030 m (body/base/slippery)
+      Gripper max  = 0.076 m → body dia 6cm fits ✓
+
+      CoM offset: hidden weight at lower-body +Y → CoM ≈ +1.6cm in Y
+      Key challenge zones:
+        - Slippery band  → gripper slides off during lift
+        - Neck grasp     → CoM far below contact → tips sideways
+        - Base grasp     → heavy + low → stable but hard to reach cleanly
+    -->
+    <body name="cube" pos="0.55 0.00 0.47">
+      <freejoint/>
+
+      <!-- BASE  z_rel = -0.05..-0.03  world z=0.42..0.44  r=0.030 -->
+      <!-- Dark blue, high friction — the "safe zone" -->
+      <geom name="base_section" type="cylinder"
+            size="0.030 0.010"
+            pos="0.0 0.0 -0.040"
+            rgba="0.08 0.20 0.60 1"
+            mass="0.10"
+            condim="4"
+            friction="2.8 0.08 0.008"
+            solref="0.004 1" solimp="0.99 0.999 0.0001"/>
+
+      <!-- BODY  z_rel = -0.03..+0.01  world z=0.44..0.48  r=0.030 -->
+      <!-- Mid blue, normal friction -->
+      <geom name="body_lower" type="cylinder"
+            size="0.030 0.020"
+            pos="0.0 0.0 -0.010"
+            rgba="0.18 0.42 0.82 1"
+            mass="0.05"
+            condim="4"
+            friction="1.8 0.05 0.005"
+            solref="0.004 1" solimp="0.99 0.999 0.0001"/>
+
+      <!-- SLIPPERY BAND  z_rel=+0.01..+0.05  world z=0.48..0.52  r=0.030 -->
+      <!-- Vivid orange — LOW FRICTION — gripper WILL slip here -->
+      <geom name="slippery_band" type="cylinder"
+            size="0.030 0.020"
+            pos="0.0 0.0 0.030"
+            rgba="0.95 0.45 0.05 1"
+            mass="0.02"
+            condim="4"
+            friction="0.15 0.001 0.0001"
+            solref="0.004 1" solimp="0.99 0.999 0.0001"/>
+
+      <!-- SHOULDER  z_rel=+0.05..+0.08  world z=0.52..0.55  r=0.022 -->
+      <!-- Mid blue, narrower — visible step inward -->
+      <geom name="shoulder" type="cylinder"
+            size="0.022 0.015"
+            pos="0.0 0.0 0.065"
+            rgba="0.20 0.50 0.88 1"
+            mass="0.02"
+            condim="4"
+            friction="1.5 0.04 0.004"
+            solref="0.004 1" solimp="0.99 0.999 0.0001"/>
+
+      <!-- NECK  z_rel=+0.08..+0.12  world z=0.55..0.59  r=0.015 -->
+      <!-- Bright blue, narrow but grippy — CoM very far below → tips -->
+      <geom name="neck" type="cylinder"
+            size="0.015 0.020"
+            pos="0.0 0.0 0.100"
+            rgba="0.28 0.62 0.98 1"
+            mass="0.01"
+            condim="4"
+            friction="1.8 0.05 0.005"
+            solref="0.004 1" solimp="0.99 0.999 0.0001"/>
+
+      <!-- CAP  z_rel=+0.12..+0.13  world z=0.59..0.60  r=0.018 -->
+      <!-- Dark cap, slightly wider than neck for visual clarity -->
+      <geom name="top_cap" type="cylinder"
+            size="0.018 0.005"
+            pos="0.0 0.0 0.125"
+            rgba="0.06 0.18 0.50 1"
+            mass="0.005"
+            condim="4"
+            friction="1.6 0.04 0.004"
+            solref="0.004 1" solimp="0.99 0.999 0.0001"/>
+
+      <!--
+        HIDDEN WEIGHT — invisible, anchored in base, shifts CoM +Y
+        mass=0.25 vs total visible mass=0.205 → CoM offset ≈ +1.6cm Y
+      -->
+      <geom name="weight" type="sphere"
+            size="0.008"
+            pos="0.0 0.025 -0.038"
+            rgba="1 0 0 0"
+            mass="0.25"
+            condim="1"/>
+
+      <site name="cube_center" pos="0 0 0"          size="0.004" rgba="1 0 0 1"/>
+      <site name="com_marker"  pos="0 0.016 -0.030"  size="0.006" rgba="1 0.5 0 1"/>
+    </body>
+
+  </worldbody>
+
+</mujoco>

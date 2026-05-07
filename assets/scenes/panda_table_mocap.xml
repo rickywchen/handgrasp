@@ -1,0 +1,46 @@
+<mujoco model="panda_table_mocap">
+
+  <compiler angle="radian" autolimits="true"/>
+
+  <!-- Stability: more solver work helps reduce jitter for welded mocap + contacts -->
+  <option timestep="0.002" gravity="0 0 -9.81" iterations="100" ls_iterations="50"/>
+
+  <visual>
+    <global offwidth="1280" offheight="720"/>
+  </visual>
+
+  <include file="../models/franka_emika_panda/panda.xml"/>
+
+  <worldbody>
+    <light pos="1 1 2" dir="-1 -1 -2" diffuse="0.9 0.9 0.9"/>
+
+    <!-- Mocap body moved by Python -->
+    <body name="hand_mocap" mocap="true" pos="0.4 0 0.6" quat="1 0 0 0">
+      <geom type="sphere" size="0.01" rgba="1 0 0 0.3" contype="0" conaffinity="0"/>
+    </body>
+
+    <!-- Table -->
+    <body name="table" pos="0.5 0 0">
+      <!-- Slightly softer contact parameters help reduce chatter -->
+      <geom type="box" size="0.35 0.25 0.02" pos="0 0 0.38" rgba="0.7 0.7 0.7 1"
+            solref="0.02 1" solimp="0.9 0.95 0.001"/>
+      <geom type="box" size="0.03 0.03 0.38" pos="0 0 0.19" rgba="0.5 0.5 0.5 1"
+            solref="0.02 1" solimp="0.9 0.95 0.001"/>
+    </body>
+
+    <!-- Cube -->
+    <body name="cube" pos="0.55 0 0.45">
+      <freejoint/>
+      <geom name="cube_geom" type="box" size="0.03 0.03 0.03"
+            rgba="0.2 0.6 0.9 1" density="300"
+            solref="0.02 1" solimp="0.9 0.95 0.001"/>
+    </body>
+  </worldbody>
+
+  <!-- Weld mocap to Panda hand -->
+  <equality>
+    <weld name="mocap_weld" body1="hand_mocap" body2="hand"
+          solref="0.02 1" solimp="0.9 0.95 0.001"/>
+  </equality>
+
+</mujoco>

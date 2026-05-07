@@ -1,0 +1,22 @@
+<mujoco model="panda_menagerie_scene">
+
+  <!-- Use the menagerie scene (known-good asset paths) -->
+  <include file="../models/franka_emika_panda/scene.xml"/>
+
+  <worldbody>
+    <!-- Add a table and cube *in addition* to what scene.xml has -->
+    <body name="table" pos="0.5 0 0">
+      <geom type="box" size="0.35 0.25 0.02" pos="0 0 0.38"
+            rgba="0.7 0.7 0.7 1"/>
+      <geom type="box" size="0.03 0.03 0.38" pos="0 0 0.19"
+            rgba="0.5 0.5 0.5 1"/>
+    </body>
+
+    <body name="cube" pos="0.55 0 0.45">
+      <freejoint/>
+      <geom type="box" size="0.03 0.03 0.03"
+            rgba="0.2 0.6 0.9 1" density="300"/>
+    </body>
+  </worldbody>
+
+</mujoco>

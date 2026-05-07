@@ -1,0 +1,28 @@
+
+============================================================
+  AFFORDANCE REPORT: cube
+============================================================
+  Object type:      cylinder
+  Dimensions:       6.0 × 6.0 × 10.0 cm
+  Geom centre:      [0.550, 0.000, 0.500]
+  Real CoM:         [0.550, 0.022, 0.500]
+  CoM offset (XY):  2.2 cm
+  Table Z:          0.450 m
+
+  Total samples:    481
+  Top-down:         161 feasible
+  Side (antip.):    210 feasible
+  Not feasible:     110
+
+  Top-down quality:  min=0.40  max=0.76  mean=0.49
+  Best top contact:  pos=[0.55  0.021 0.55 ]  q=0.761
+
+  Side quality:      min=0.45  max=0.87  mean=0.69
+  Best contact:      pos=[0.55  0.03  0.496]  q=0.874
+    approach=90°
+
+  NAIVE contact:     pos=[0.55 0.   0.55]  q=0.516
+  MAP contact:       pos=[0.55  0.03  0.496]  q=0.874
+  Quality gap:       35.8%
+
+============================================================

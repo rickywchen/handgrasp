@@ -1,0 +1,32 @@
+# ---- Python ----
+__pycache__/
+*.py[cod]
+.venv/
+.env
+*.egg-info/
+dist/
+build/
+
+# ---- VS Code / OS ----
+.vscode/
+.DS_Store
+Thumbs.db
+
+# ---- MuJoCo / simulation logs ----
+MUJOCO_LOG.TXT
+mujoco_log.txt
+*.log
+
+# ---- Downloaded datasets / large assets (DO NOT COMMIT) ----
+ycb_objects/
+assets/objects/
+assets/cache/
+assets/renders/
+assets/results/
+assets/exports/
+
+data/
+datasets/
+
+# ---- Jupyter ----
+.ipynb_checkpoints/
